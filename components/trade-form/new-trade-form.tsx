@@ -247,7 +247,7 @@ export function NewTradeForm({ initialMode = "trade" }: Props) {
     toast.success(initialMode === "journal" ? "Journal entry saved." : "Trade saved.", {
       description: `${symbol} ${direction} • ${calc.rrLabel} RR`,
     })
-    router.push("/")
+    router.push("/app")
   }
 
   // Hard requirement: at least one account must exist before saving a trade or journal entry.
@@ -275,7 +275,7 @@ export function NewTradeForm({ initialMode = "trade" }: Props) {
                   </Link>
                 </Button>
                 <Button asChild variant="ghost">
-                  <Link href="/">
+                  <Link href="/app">
                     <ArrowLeft className="size-4" aria-hidden />
                     Back to dashboard
                   </Link>
@@ -560,7 +560,7 @@ export function NewTradeForm({ initialMode = "trade" }: Props) {
 
         <div className="flex flex-col-reverse items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
           <Button asChild type="button" variant="ghost">
-            <Link href="/">
+            <Link href="/app">
               <ArrowLeft className="size-4" aria-hidden />
               Back to dashboard
             </Link>

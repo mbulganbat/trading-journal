@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { AccountStoreProvider } from '@/components/account-store-provider'
+import { AuthStoreProvider } from '@/components/auth-store-provider'
 import { TradeStoreProvider } from '@/components/trade-store-provider'
 import { Toaster } from '@/components/ui/sonner'
 import './globals.css'
@@ -40,12 +41,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark bg-background">
       <body className="font-sans antialiased">
-        <AccountStoreProvider>
-          <TradeStoreProvider>
-            {children}
-            <Toaster richColors closeButton />
-          </TradeStoreProvider>
-        </AccountStoreProvider>
+        <AuthStoreProvider>
+          <AccountStoreProvider>
+            <TradeStoreProvider>
+              {children}
+              <Toaster richColors closeButton />
+            </TradeStoreProvider>
+          </AccountStoreProvider>
+        </AuthStoreProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
